@@ -1,0 +1,35 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "mongodb": "mongodb://localhost:27017/pc_back",
+  "authentication": {
+    //"secret": "0b94fe11914c5c36a371b81548231d7b0bd210bb2734f84c047c41beac7e10044750f863907bffe99c1c9b632cd623e8bc1a8b3236ee36f63fbe3c155331e8db3c2545773bb17de972b3dd56d765a10bac077ea8dc482e33338d6d4fd9e710641bd65a79af93aa24717943284429f2824f12e5853b8ef56a4769655a0f48d03aa2e2686795ce0c3b763bf941fb7c5815428038b0c2dc267e77ec8bcc016dc62ae9c49162869a2c6b8f8d20f55c5ce8ae191857feb94e21741ab505dfb039c7725518980596f436b0b0575f9d622dfc8962002795313946ec6d5caf2243e4886552daf793bd22cb528666848188e300a1961e8b74174460da0fcf38f005ef1d65",
+    "secret": "supersecret",
+    "strategies": [
+      "jwt"
+    ],
+    "cookie": {
+      "enabled": true, // whether the cookie should be enabled 
+      "name": "feathers-jwt", // the cookie name 
+      "httpOnly": false, // whether the cookie should not be available to client side JavaScript 
+      "secure": true // whether cookies should only be available over HTTPS 
+    },
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "type": "access"
+      },
+      "audience": "https://unknown.com",
+      "subject": "anonymous",
+      "issuer": "feathers-123",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    }
+  }
+}
