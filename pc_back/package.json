@@ -1,6 +1,6 @@
 {
   "name": "pc-back",
-  "description": "Pulse Check Backend",
+  "description": "PulseCheck backend",
   "version": "0.0.0",
   "homepage": "",
   "main": "src",
@@ -8,8 +8,8 @@
     "feathers"
   ],
   "author": {
-    "name": "trugoj",
-    "email": "martin@ganymed.org"
+    "name": "Martin Nigsch",
+    "email": "martin_nigsch@swissre.com"
   },
   "contributors": [],
   "bugs": {},
@@ -31,10 +31,7 @@
     "body-parser": "^1.18.2",
     "compression": "^1.7.1",
     "cors": "^2.8.4",
-    "feathers": "^2.2.1",
-    "feathers-authentication": "^1.2.7",
-    "feathers-authentication-hooks": "^0.1.4",
-    "feathers-authentication-jwt": "^0.3.2",
+    "feathers": "^2.2.2",
     "feathers-configuration": "^0.4.1",
     "feathers-errors": "^2.9.2",
     "feathers-hooks": "^2.1.0",
@@ -44,11 +41,11 @@
     "helmet": "^3.8.2",
     "mongodb": "^2.2.31",
     "serve-favicon": "^2.4.5",
-    "winston": "^2.3.1"
+    "winston": "^2.4.0"
   },
   "devDependencies": {
-    "eslint": "^4.7.2",
-    "mocha": "^3.5.3",
+    "eslint": "^4.8.0",
+    "mocha": "^4.0.1",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"
   }

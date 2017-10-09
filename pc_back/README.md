@@ -1,6 +1,6 @@
 # pc-back
 
-> Pulse Check Backend
+> PulseCheck backend
 
 ## About
 
