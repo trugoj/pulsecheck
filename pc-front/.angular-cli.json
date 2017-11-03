@@ -17,9 +17,9 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "pc",
+      "prefix": "app",
       "styles": [
-        "../node_modules/semantic-ui-css/semantic.css"
+        "styles.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
@@ -55,10 +55,6 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {},
-    "serve": {
-      "port": 1337,
-      "host": "cmas.swissre.com"
-    }
+    "component": {}
   }
 }
