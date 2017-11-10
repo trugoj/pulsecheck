@@ -1,13 +1,14 @@
 {
   "host": "cmas.swissre.com",
-  "port": 3021,
+  "port": 3030,
   "public": "../public/",
   "paginate": {
     "default": 10,
     "max": 50
   },
+  "nedb": "../data",
   "authentication": {
-    "secret": "cb2200d6dfbe69b12f1dce2013b55abe2f4623d496f094f807a7a933fc1d8c386faa4c012e27eb9b58939f30df8f509e117d7c489689a3ee1d9502776bccb16fa4113a7b7b7f8a97a9dde1433fe3e6fe7378a9ec4d1ee260c7a1d8eeb2407a0ca0d3d4413d551f2cbf52ab59ed60fa5dc0b8d4e264725c4135f1563219a4c05593c8abe2f0f6f0ebb4d2ddf631d7ba91c4badaf7a12be77020d621999b2109da40a85ee41bd3d5271c32798b9c021993d5b03903b5507d0b8b741a30fde69f0ba8eb16b06e58796148bf05a862743ca89079e8b8876ed39068893c1ca73bd1e1c97421b1a01a119011d0b6a33d4f7320110a6992a429659386003a0ca3cc1ac3",
+    "secret": "220cac0f7d60fb3b50d5e53844076334d3143894836b1c1eb2c4c893ab6454da9da1a8d9147b94068080f0b25dd1d77d896fbb087cb056b815076ee6bd69c62a429d7f412fae52593bd66c0bc1a1b04dcafc37357072a8f26382d734ca830cc44e32c50852feffdd4691229b851a6a08bb1b4a7a14234c813fbb459ff9d519101786caa871d45073da38cf012a2120d0f5cd0f6c4fe33c4ceb383e8c306d46eae714ca96226637763a2f8621e81ccbf0d6f67b0b9306309c87f600043aa1d608fab7073f384a34615fbe7671aa550c869353d342eef9f34914886e44e58b1205f7ce7fff62bf73a8a2bd2451d5e99a09db877073462cf4f24495e5f65ad740c2",
     "strategies": [
       "jwt",
       "local"
@@ -18,7 +19,7 @@
       "header": {
         "type": "access"
       },
-      "audience": "https://cmas.swissre.com",
+      "audience": "https://yourdomain.com",
       "subject": "anonymous",
       "issuer": "feathers",
       "algorithm": "HS256",
@@ -26,9 +27,9 @@
     },
     "local": {
       "entity": "user",
+      "service": "users",
       "usernameField": "email",
       "passwordField": "password"
     }
-  },
-  "nedb": "../data"
+  }
 }

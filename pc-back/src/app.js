@@ -23,31 +23,44 @@ const authentication = require('./authentication');
 const app = feathers();
 
 // Load app configuration
-app.configure(configuration());
+app.configure(configuration(path.join(__dirname, '..')));
 // Enable CORS, security, compression, favicon and body parsing
 app.use(cors());
 app.use(helmet());
 app.use(compress());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// This is for socket.io, but I imagine it's similar.
+app.configure(socketio(function (io) {
+   io.on('connection', function (socket) {
+       console.log("whatsup?");
+       Object.assign(socket.feathers, {headers: socket.handshake.headers});
+           socket.feathers.ip = socket.conn.remoteAddress;
+           socket.feathers.dataABC = "Hello World";
+             });
+             }));
+
+app.use(function(req, res, next) {
+            req.feathers.data123 = 'Hello world';
+                next();
+                  });
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 // Host the public folder
 app.use('/', feathers.static(app.get('public')));
 
+app.configure(middleware);
 // Set up Plugins and providers
 app.configure(hooks());
 app.configure(rest());
 app.configure(socketio());
 
-// Configure other middleware (see `middleware/index.js`)
-app.configure(middleware);
-app.configure(authentication);
+//app.configure(authentication);
+
 // Set up our services (see `services/index.js`)
 app.configure(services);
-// Configure a middleware for 404s and the error handler
+// Configure middleware (see `middleware/index.js`) - always has to be last
+app.hooks(appHooks);
 app.use(notFound());
 app.use(handler());
-
-app.hooks(appHooks);
 
 module.exports = app;

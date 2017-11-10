@@ -1,14 +1,14 @@
-import { AppPage } from './app.po';
+import { FeathersChatAngularPage } from './app.po';
 
-describe('pc-front App', () => {
-  let page: AppPage;
+describe('feathers-chat-angular App', () => {
+  let page: FeathersChatAngularPage;
 
   beforeEach(() => {
-    page = new AppPage();
+    page = new FeathersChatAngularPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('app works!');
   });
 });

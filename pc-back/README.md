@@ -1,6 +1,8 @@
-# pc-back
+# feathers-chat
 
-> Backend pulsecheck
+[![Greenkeeper badge](https://badges.greenkeeper.io/feathersjs/feathers-chat.svg)](https://greenkeeper.io/)
+
+> A Feathers real-time chat application
 
 ## About
 
@@ -14,7 +16,7 @@ Getting up and running is as easy as 1, 2, 3.
 2. Install your dependencies
 
     ```
-    cd path/to/pc-back; npm install
+    cd path/to/feathers-chat; npm install
     ```
 
 3. Start your app
@@ -22,6 +24,11 @@ Getting up and running is as easy as 1, 2, 3.
     ```
     npm start
     ```
+
+4. Goto to browser and check link as below
+     ```
+     http://localhost:3030/vanilla/
+      ```
 
 ## Testing
 
