@@ -18,7 +18,7 @@ export class Feathers {
   private _socket: any;
 
   constructor() {
-    this._socket = io('http://cmas.swissre.com:3021');       // init socket.io
+    this._socket = io('http://cmas.swissre.com:3030');       // init socket.io
 
     this._feathers = feathers();                      // init Feathers
     this._feathers.configure(hooks());                // add hooks plugin

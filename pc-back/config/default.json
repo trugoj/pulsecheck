@@ -1,5 +1,5 @@
 {
-  "host": "cmas.swissre.com",
+  "host": "localhost",
   "port": 3030,
   "public": "../public/",
   "paginate": {

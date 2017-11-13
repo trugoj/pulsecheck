@@ -12,14 +12,12 @@ export class AuthGuard implements CanActivate {
               state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
     /* Try to auth with the server. If authed resolve to true, else resolve to false */
-                      return true;
-                      
-                      /*return this.auth
+    return this.auth
       .logIn()
       .then(() => true)
       .catch(() => {
         this.router.navigate(['/login']);
         return false;
-      });*/
+      });
   }
 }

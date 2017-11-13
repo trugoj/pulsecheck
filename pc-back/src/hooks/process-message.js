@@ -6,9 +6,7 @@
 module.exports = function() {
   return function(hook) {
     // The authenticated user
-    console.log(hook.params);
     const user = hook.params.user;
-    const remoteip = hook.params.ip;
     // The actual message text
     const text = hook.data.text
       // Messages can't be longer than 400 characters
@@ -21,7 +19,6 @@ module.exports = function() {
       text,
       // Set the user id
       userId: user._id,
-      userIp: remoteip,
       // Add the current time via `getTime`
       createdAt: new Date().getTime()
     };
