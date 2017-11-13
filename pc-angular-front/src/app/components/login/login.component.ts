@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { Feathers } from '../../services/feathers.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -9,35 +11,51 @@ import { Feathers } from '../../services/feathers.service';
 })
 export class LoginComponent {
   messages: string[] = [];
+  myip$: Observable<any>;
 
-  constructor(private feathers: Feathers, private router: Router) {}
+  constructor(private feathers: Feathers, private router: Router, private data: DataService) {
+    this.myip$ = data.getmyip$();
+    console.log("myip: ", this.myip$);
+    this.myip$.subscribe(
+            uid => {
+                    console.log("uid: ", uid)
+    
+               var password = 'secret';
+                    var email = uid.ip;
 
-  login(email: string, password: string) {
-    if (!email || !password) {
-      this.messages.push('Incomplete credentials!');
-      return;
-    }
+                    console.log({email, password});
+             // try to authenticate with feathers
+            this.feathers.authenticate({
+              strategy: 'local',
+              email: email,
+              password: password
+            })
+              // navigate to base URL on success
+              .then(() => {
+                this.router.navigate(['/']);
+              })
+              .catch(err => {
+      
+                    this.feathers.service('users')
+               .create({email, password})
+               .then(() => this.messages.push('User created.'))
+               .catch(err => this.messages.push('Could not create user!'))
+                    ;
 
-    // try to authenticate with feathers
-    this.feathers.authenticate({
-      strategy: 'local',
-      email,
-      password
-    })
-      // navigate to base URL on success
-      .then(() => {
-        this.router.navigate(['/']);
-      })
-      .catch(err => {
-        this.messages.unshift('Wrong credentials!');
-      });
-  }
+                this.messages.unshift('Wrong credentials!');
+            this.feathers.authenticate({
+              strategy: 'local',
+              email: email,
+              password: password
+            })
+              // navigate to base URL on success
+              .then(() => {
+                this.router.navigate(['/']);
+              })
+               });
+             
+            }
 
-  signup(email: string, password: string) {
-    this.feathers.service('users')
-      .create({email, password})
-      .then(() => this.messages.push('User created.'))
-      .catch(err => this.messages.push('Could not create user!'))
-    ;
-  }
+  )};
+
 }

@@ -17,6 +17,11 @@ const appHooks = require('./app.hooks');
 
 const authentication = require('./authentication');
 
+const dns = require('dns');
+const {promisify} = require('util');
+
+const dnsLookupAsync = promisify(dns.lookupService);
+
 const app = feathers();
 
 // Load app configuration
@@ -34,7 +39,33 @@ app.use('/', feathers.static(app.get('public')));
 // Set up Plugins and providers
 app.configure(hooks());
 app.configure(rest());
-app.configure(socketio());
+//app.configure(socketio());
+
+// This is for socket.io, but I imagine it's similar.
+app.configure(socketio(function (io) {
+          io.on('connection', function (socket) {
+                      Object.assign(socket.feathers, {headers: socket.handshake.headers});
+                          str = socket.conn.remoteAddress;
+                          str = str.substring(7);
+                          socket.feathers.ip = str;
+
+                          
+
+                          socket.feathers.ipdnsP = dnsLookupAsync('10.11.44.221', 22);
+                          //socket.feathers.ipdnsP.then( obj => console.log( "tralala: ", obj ) );
+
+
+                          //        , (err, hostname, service) => {
+                          //        console.log(hostname, service);
+                          //        return hostname;
+                          // });
+          })}
+));
+
+app.use(function(req, res, next) {
+        req.feathers.ip = req.ip;
+        next();
+})
 
 app.configure(authentication);
 

@@ -34,7 +34,16 @@ export class DataService {
       .find();
   }
 
-  sendMessage(message: string) {
+  getmyip$() {
+    // just returning the observable will query the backend on every subscription
+    // using some caching mechanism would be wise in more complex applications
+    return this.feathers
+      .service('getmyip')
+      .watch()
+      .find();
+  }
+
+   sendMessage(message: string) {
     if (message === '') {
       return;
     }
