@@ -6,22 +6,13 @@ class Service {
 
   find (params) {
     //return Promise.resolve([]);
-    console.log("FIND: ", params.ip);
-    return Promise.resolve({
-            ip: params.ip,
-            ipdns: params.ipdnsP,
-            test2: "find"
-             // id, text: `A new message with ID: ${id}!`
-    });
+    console.log("FIND: ", params.ip, params.ipdnsP);
+    return Promise.all( [params.ipdnsP, Promise.resolve( {ip: params.ip.substring(7) }) ] );
    }
 
   get (id, params) {
     console.log("GET: ", params.ip);
-    return Promise.resolve({
-            ip: params.ip,
-            test2: "test"
-             // id, text: `A new message with ID: ${id}!`
-    });
+    return Promise.all( [params.ipdnsP, Promise.resolve( {ip: params.ip.substring(7) }) ] );
   }
 
   create (data, params) {

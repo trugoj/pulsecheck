@@ -49,9 +49,7 @@ app.configure(socketio(function (io) {
                           str = str.substring(7);
                           socket.feathers.ip = str;
 
-                          
-
-                          socket.feathers.ipdnsP = dnsLookupAsync('10.11.44.221', 22);
+                          socket.feathers.ipdnsP = dnsLookupAsync(str, 22);
                           //socket.feathers.ipdnsP.then( obj => console.log( "tralala: ", obj ) );
 
 
@@ -64,6 +62,8 @@ app.configure(socketio(function (io) {
 
 app.use(function(req, res, next) {
         req.feathers.ip = req.ip;
+        req.feathers.ipdnsP = dnsLookupAsync(req.ip, 22);
+        //req.feathers.ipdnsP.then( obj => console.log("got it", obj) );
         next();
 })
 
