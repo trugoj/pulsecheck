@@ -21,7 +21,7 @@ export class LoginComponent {
                     console.log("uid: ", uid)
     
                var password = 'secret';
-                    var email = uid.ip;
+                    var email = uid[0].hostname;
 
                     console.log({email, password});
              // try to authenticate with feathers
@@ -38,20 +38,15 @@ export class LoginComponent {
       
                     this.feathers.service('users')
                .create({email, password})
-               .then(() => this.messages.push('User created.'))
+                              .then(() => {
+                                      this.messages.push('User created.')
+                                      this.router.navigate(['/']);
+                              }
+                              )
                .catch(err => this.messages.push('Could not create user!'))
                     ;
 
                 this.messages.unshift('Wrong credentials!');
-            this.feathers.authenticate({
-              strategy: 'local',
-              email: email,
-              password: password
-            })
-              // navigate to base URL on success
-              .then(() => {
-                this.router.navigate(['/']);
-              })
                });
              
             }
