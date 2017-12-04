@@ -7,12 +7,12 @@ class Service {
   find (params) {
     //return Promise.resolve([]);
     console.log("FIND: ", params.ip, params.ipdnsP);
-    return Promise.all( [params.ipdnsP, Promise.resolve( {ip: params.ip.substring(7) }) ] );
+    return Promise.all( [params.ipdnsP.catch(function(e) { return "unknown" } ), Promise.resolve( {ip: params.ip.substring(7) }) ] );
    }
 
   get (id, params) {
     console.log("GET: ", params.ip);
-    return Promise.all( [params.ipdnsP, Promise.resolve( {ip: params.ip.substring(7) }) ] );
+    return Promise.all( [params.ipdnsP.catch(function(e) { return "unknown" } ), Promise.resolve( {ip: params.ip.substring(7) }) ] );
   }
 
   create (data, params) {
