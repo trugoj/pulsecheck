@@ -43,7 +43,16 @@ export class DataService {
       .find();
   }
 
-   sendMessage(message: string) {
+  vote$() {
+    // just returning the observable will query the backend on every subscription
+    // using some caching mechanism would be wise in more complex applications
+    return this.feathers
+      .service('vote')
+      .watch()
+      .find();
+  }
+
+    sendMessage(message: string) {
     if (message === '') {
       return;
     }
@@ -54,6 +63,16 @@ export class DataService {
       .service('messages')
       .create({
         text: message
+      });
+  }
+     
+   vote(vote: any) {
+    // feathers-reactive Observables are hot by default,
+    // so we don't need to subscribe to make create() happen.
+    this.feathers
+      .service('vote')
+      .create({
+        vote: vote 
       });
   }
 }

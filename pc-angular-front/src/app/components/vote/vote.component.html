@@ -1,3 +1,52 @@
-<main class="flex flex-column">
-  <div>this is a test</div>
-</main>
+<body>
+        <div class="ui text container">
+        <h1 class="ui dividing header">Pulse check</h1>
+        
+        <h4>In a 1-10 scale, what is your professional satisfaction level today?</h4>
+        <div class="ui form">
+                <div class="inline fields">
+                        <div class="field" *ngFor="let entry of list">
+                                <div class="ui radio checkbox">
+                                        <input type="radio" name="rating" [value]="entry.id" (change)="onSelectionChangeSat(entry)">
+                                        <label>{{ entry.description }}</label>
+                                </div>
+                        </div>
+                </div>
+        </div>
+
+        <h4>Does your line manager care about your current satisfaction level?</h4>
+        <div class="ui form">
+                <div class="inline fields">
+                        <div class="field" *ngFor="let entry of sat_list">
+                                <div class="ui radio checkbox">
+                                        <input type="radio" name="boss" [value]="entry.id" (change)="onSelectionChangeBoss(entry)">
+                                        <label>{{ entry.description }}</label>
+                                </div>
+                        </div>
+                </div>
+        </div>
+
+        <h4>Are you being distracted from your core tasks by urgent/ad hoc requests?</h4>
+        <div class="ui form">
+                <div class="inline fields">
+                        <div class="field" *ngFor="let entry of dist_list">
+                                <div class="ui radio checkbox">
+                                        <input type="radio" name="adhoc" [value]="entry.id" (change)="onSelectionChangeDist(entry)">
+                                        <label>{{ entry.description }}</label>
+                                </div>
+                        </div>
+                </div>
+        </div>
+
+        <button class="ui button" (click)="submit()">
+                  Submit
+        </button>
+
+        
+        
+        <div class="ui divider"></div>
+        <div>
+                Your selection: Satisfaction <b>{{ satisfactionEntry.description }}</b>, Boss cares: <b>{{ bossEntry.description }}</b>, adhoc Distraction: <b>{{ distEntry.description }}</b>
+        </div>
+</div>
+</body>

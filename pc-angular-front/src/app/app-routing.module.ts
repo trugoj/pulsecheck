@@ -4,6 +4,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { VoteComponent } from './components/vote/vote.component';
+import { OverviewComponent } from './components/overview/overview.component';
 
 /*
   Our app's routes.
@@ -31,8 +32,13 @@ const routes: Routes = [
         path: 'vote',
         component: VoteComponent,
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'overview',
+        component: OverviewComponent,
+        canActivate: [AuthGuard]
       }
-    ]
+     ]
   }
 ];
 
