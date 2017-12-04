@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { Feathers } from './services/feathers.service';
 import { LoginComponent } from './components/login/login.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { VoteComponent } from './components/vote/vote.component';
 import { DataService } from './services/data.service';
 import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,7 +17,8 @@ import { AuthGuard } from './guards/auth.guard';
   declarations: [
     AppComponent,
     LoginComponent,
-    ChatComponent
+    ChatComponent,
+    VoteComponent
   ],
   imports: [
     BrowserModule,

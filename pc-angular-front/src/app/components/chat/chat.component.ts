@@ -13,7 +13,8 @@ export class ChatComponent {
   messages$: Observable<any[]>;
   users$: Observable<any[]>;
 
-  constructor(private data: DataService, private auth: AuthService) {
+        constructor(private data: DataService, private auth: AuthService) {
+                console.log("chat constructor");
     // get messages from data service
     this.messages$ = data.messages$()
       // our data is paginated, so map to .data

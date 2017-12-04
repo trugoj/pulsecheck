@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ChatComponent } from './components/chat/chat.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './components/login/login.component';
+import { VoteComponent } from './components/vote/vote.component';
 
 /*
   Our app's routes.
@@ -15,7 +16,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'chat'
+        redirectTo: 'vote'
       },
       {
         path: 'chat',
@@ -25,6 +26,11 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'vote',
+        component: VoteComponent,
+        canActivate: [AuthGuard]
       }
     ]
   }

@@ -9,10 +9,17 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
 
+  cred : any;
+        
   constructor(private feathers: Feathers, private router: Router) {}
 
   public logIn(credentials?): Promise<any> {
-    return this.feathers.authenticate(credentials);
+          this.cred = credentials;
+          return this.feathers.authenticate(credentials);
+  }
+
+  public getCredentials(): any {
+          return this.cred;
   }
 
   public logOut() {
