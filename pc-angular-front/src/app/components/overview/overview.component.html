@@ -1,6 +1,6 @@
-<body>
-        <p>hello too</p>
-        <div class="" *ngFor="let vote of votes$">
-                hello. {{ vote.satisfaction }}, {{vote.bossCares}}, {{vote.distracted}}
+        <div class="c3" id="chart"></div>
+        
+        <div class="" *ngFor="let e of votes$ | async">
+                {{ e.userId }}, {{ e.createdAt }}, {{ e.data.vote.satisfaction }}, {{e.data.vote.bossCares}}, {{e.data.vote.distracted}}
         </div>
-</body>
+
